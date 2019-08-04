@@ -89,11 +89,19 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Boolean AirshipMoveAction
+        public virtual SteamVR_Action_Boolean ToolActivate
         {
             get
             {
-                return SteamVR_Actions.default_AirshipMoveAction;
+                return SteamVR_Actions.default_ToolActivate;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean ToolSwap
+        {
+            get
+            {
+                return SteamVR_Actions.default_ToolSwap;
             }
         }
         

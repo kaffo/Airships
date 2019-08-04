@@ -4,12 +4,13 @@ using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 
-public class ShipMove : MonoBehaviour
+public class PilotRemote : MonoBehaviour
 {
-    //public SteamVR_Action_Vector2 airshipMoveDirection = SteamVR_Input.GetAction<SteamVR_Action_Vector2>("AirshipMoveDirection");
-    public SteamVR_Action_Boolean airshipMoveAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("AirshipMoveAction");
+    public SteamVR_Action_Boolean airshipMoveAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("ToolActivate");
 
-    public float maxSpeed = 1f;
+    public GameObject playerShip = null;
+
+    public float maxSpeed = 0.05f;
 
     private Vector2 toMove = new Vector2();
     private Player player = null;
@@ -17,15 +18,15 @@ public class ShipMove : MonoBehaviour
     private void Start()
     {
         player = Valve.VR.InteractionSystem.Player.instance;
-        if (player == null)
+        if (player == null || playerShip == null)
         {
-            Debug.LogError("<b>[SteamVR Interaction]</b> ShipMove: No Player instance found in map.");
+            Debug.LogError(this.name + " on " + this.gameObject + " has not been setup correctly!");
             this.enabled = false;
             return;
         }
     }
 
-    void Update()
+    private void Update()
     {
         bool triggerPressed = false;
         foreach (Hand hand in player.hands)
@@ -48,11 +49,11 @@ public class ShipMove : MonoBehaviour
     {
         if (toMove.magnitude > 0)
         {
-            Vector2 currentPos = new Vector2(this.transform.position.x, this.transform.position.z);
+            Vector2 currentPos = new Vector2(playerShip.transform.position.x, playerShip.transform.position.z);
             Vector2 desiredPos = currentPos + toMove;
             //Debug.Log("desiredPos:" + desiredPos);
             Vector2 endPos = Vector2.MoveTowards(currentPos, desiredPos, maxSpeed);
-            this.transform.position = new Vector3(endPos.x, this.transform.position.y, endPos.y);
+            playerShip.transform.position = new Vector3(endPos.x, playerShip.transform.position.y, endPos.y);
         }
     }
 }

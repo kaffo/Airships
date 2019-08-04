@@ -41,7 +41,11 @@
       "requirement": "optional"
     },
     {
-      "name": "/actions/default/in/AirshipMoveAction",
+      "name": "/actions/default/in/ToolActivate",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/ToolSwap",
       "type": "boolean"
     },
     {
