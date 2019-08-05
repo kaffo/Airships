@@ -8,6 +8,7 @@ public class ToolSwap : MonoBehaviour
 {
     public SteamVR_Action_Boolean toolSwapAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("ToolSwap");
 
+    public GameObject defaultTool = null;
     public int currentToolIndex = 0;
     public List<GameObject> toolGameObjects = new List<GameObject>();
 
@@ -26,6 +27,11 @@ public class ToolSwap : MonoBehaviour
         for (int i = 0; i < this.transform.childCount; i++)
         {
             toolGameObjects.Add(this.transform.GetChild(i).gameObject);
+
+            if (defaultTool != null && defaultTool == toolGameObjects[i])
+                toolGameObjects[i].SetActive(true);
+            else
+                toolGameObjects[i].SetActive(false);
         }
     }
 

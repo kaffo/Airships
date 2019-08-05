@@ -81,6 +81,7 @@ MonoBehaviour:
   toolSwapAction:
     actionPath: /actions/default/in/ToolSwap
     needsReinit: 0
+  defaultTool: {fileID: 9131623746963656306}
   currentToolIndex: 0
   toolGameObjects: []
 --- !u!1 &3128288694678755055
@@ -100,7 +101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4743659074724938314
 Transform:
   m_ObjectHideFlags: 0
@@ -165,7 +166,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8587691198921447757
 Transform:
   m_ObjectHideFlags: 0

@@ -32,6 +32,7 @@ namespace Valve.VR.InteractionSystem
 		public Color pointerInvalidColor;
 		public Color pointerLockedColor;
 		public bool showPlayAreaMarker = true;
+        public bool enableTeleportHints = true;
 
 		public float teleportFadeTime = 0.1f;
 		public float meshFadeTime = 0.2f;
@@ -184,7 +185,10 @@ namespace Valve.VR.InteractionSystem
 
 			CheckForSpawnPoint();
 
-			Invoke( "ShowTeleportHint", 5.0f );
+            if (enableTeleportHints)
+            {
+                Invoke("ShowTeleportHint", 5.0f);
+            }
 		}
 
 
